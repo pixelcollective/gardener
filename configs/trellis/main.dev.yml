@@ -1,0 +1,8 @@
+acme_tiny_challenges_directory: "{{ www_root }}/letsencrypt"
+env: development
+ferm_enabled: false
+mysql_root_password: "{{ vault_mysql_root_password }}"
+web_user: vagrant
+php_memory_limit: 256M
+php_post_max_size: 128M
+php_upload_max_filesize: 128M

@@ -1,0 +1,15 @@
+wordpress_sites:
+  {{ SITE_URL }}:
+    site_hosts:
+      - canonical: {{ DOMAIN }}.{{ TEST_TLD }}
+        redirects:
+          - www.{{ DOMAIN }}.{{ TEST_TLD }}
+    local_path: ../site
+    admin_email: {{ ADMIN_EMAIL }}
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: self-signed
+    cache:
+      enabled: false
