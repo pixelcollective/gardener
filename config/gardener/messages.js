@@ -17,8 +17,8 @@ exports.doSuccess = (msg) => {
   return doPause();
 }
 
-exports.doError = () => {
-  console.log(pad(colors.red('❌ We\'ve got a problem. Script halted at last step.')));
+exports.doError = (msg) => {
+  msg ? console.log(pad(colors.red('❌ '+ msg))) : console.log(pad(colors.red('❌ We\'ve got a problem. Script halted at last step.')));
   doPause();
   shell.exit(1);
 }

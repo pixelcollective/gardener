@@ -1,4 +1,5 @@
 const shell = require('shelljs');
+const parseDomain = require('parse-domain')
 const inquirer = require('inquirer');
 const pad = require('pad');
 const sleep = require('sleep');
@@ -38,12 +39,14 @@ inquirer
     const gardenerPath = process.cwd();
 
     const config = {
+      label: parseDomain(answers.host).domain,
       host: answers.host,
       testHost: answers.testHost,
       stagingHost: answers.stagingHost,
       github: answers.github,
       email: answers.email,
       configPath: gardenerPath + '/config',
+      traefikPath: gardenerPath + '/traefik',
       bedrockPath: gardenerPath + '/' + answers.host,
       trellisPath: gardenerPath + '/trellis',
       sagePath: gardenerPath + '/' + answers.host + '/web/app/themes/sage',
@@ -52,18 +55,19 @@ inquirer
 
     let err = null;
 
-    shell.echo  (pad('👩‍🚀 Green light for ignition in ...'));
+    shell.echo  (pad ('👩‍🚀 Green light for ignition in ...'));
     sleep.sleep (1);
-    shell.echo  (pad('.. 3..,'));
+    shell.echo  (pad ('.. 3..,'));
     sleep.sleep (1);
-    shell.echo  (pad('.. 2..,'));
+    shell.echo  (pad ('.. 2..,'));
     sleep.sleep (1);
-    shell.echo  (pad('. 1.... 😬,'));
+    shell.echo  (pad ('. 1.... 😬,'));
     sleep.sleep (1);
-    shell.echo  (pad('🚀 HYPE'));
+    shell.echo  (pad ('🚀 HYPE'));
     sleep.sleep (1);
 
-    tasks.initializeRoots(config, err);
-    tasks.configureDocker(config, err);
+    tasks.initializeRoots  (config, err);
+    tasks.initializeDocker (config, err);
+    tasks.vhost            (config, err);
 
   });
