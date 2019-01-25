@@ -1,7 +1,0 @@
-vault_mysql_root_password: devpw
-
-vault_wordpress_sites:
-  {{ SITE_URL }}:
-    admin_password: admin
-    env:
-      db_password: example_dbpassword

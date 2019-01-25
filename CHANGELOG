@@ -1,0 +1,9 @@
+## Unreleased
+
+* Docker/Traefik configuration
+* User supplied config files
+* Better structure
+* Better JS
+* CHANGELOG
+* Semantic versioning
+* NPM package
