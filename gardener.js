@@ -3,8 +3,7 @@ const inquirer = require('inquirer');
 const pad = require('pad');
 const sleep = require('sleep');
 
-const messages = require('./config/messages');
-const tasks = require('./config/tasks');
+const tasks = require('./config/gardener/tasks');
 
 inquirer
   .prompt([
@@ -64,15 +63,6 @@ inquirer
     shell.echo  (pad('🚀 HYPE'));
     sleep.sleep (1);
 
-    initializeRootsStack(config, err);
+    tasks.initializeRoots(config, err);
 
   });
-
-function initializeRootsStack(config, err) {
-  messages.doInfo            (' Initializing Roots.io stack.. ');
-  tasks.initializeTrellis    (config, err);
-  tasks.initializeBedrock    (config, err);
-  tasks.initializeSage       (config, err);
-  tasks.initializeSoil       (config, err);
-  messages.doSuccess         (' Roots.io stack initialized. ');
-}

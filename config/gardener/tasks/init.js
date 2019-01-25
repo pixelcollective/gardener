@@ -1,5 +1,5 @@
 const shell = require('shelljs');
-const messages = require('./messages');
+const messages = require('./../messages');
 
 exports.initializeTrellis = (config, err) => {
   const tasks = [
