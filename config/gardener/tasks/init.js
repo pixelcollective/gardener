@@ -1,7 +1,7 @@
 const shell = require('shelljs');
 const messages = require('./../messages');
 
-exports.initializeTrellis = (config, err) => {
+exports.Trellis = (config, err) => {
   const tasks = [
     {
       label: 'git clone --depth=1 git@github.com:roots/trellis.git ' + config.trellisPath,
@@ -16,7 +16,7 @@ exports.initializeTrellis = (config, err) => {
   return doTasks('Initializing Trellis ❖', ' Trellis initialized', tasks, err);
 }
 
-exports.initializeBedrock = (config, err) => {
+exports.Bedrock = (config, err) => {
   const tasks = [
     {
       label: 'git clone --depth=1 git@github.com:roots/bedrock.git ' + config.bedrockPath,
@@ -31,7 +31,7 @@ exports.initializeBedrock = (config, err) => {
   return doTasks('Initializing Bedrock ❖', ' Bedrock initialized', tasks, err);
 }
 
-exports.initializeSage = (config, err) => {
+exports.Sage = (config, err) => {
   const tasks = [
     {
       label: 'git clone --depth=1 git@github.com:roots/sage.git ' + config.sagePath,
@@ -46,7 +46,7 @@ exports.initializeSage = (config, err) => {
   return doTasks('Initializing Sage ❖', ' Sage initialized', tasks, err);
 }
 
-exports.initializeSoil = (config, err) => {
+exports.Soil = (config, err) => {
   const tasks = [
     {
       label: 'git clone --depth=1 git@github.com:roots/soil.git',

@@ -64,5 +64,6 @@ inquirer
     sleep.sleep (1);
 
     tasks.initializeRoots(config, err);
+    tasks.configureDocker(config, err);
 
   });

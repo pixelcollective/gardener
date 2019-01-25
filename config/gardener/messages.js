@@ -9,16 +9,16 @@ doPause = () => {
 
 exports.doInfo = (msg) => {
   console.log(pad(colors.blue('🔧 '+ msg)));
-  return doPause(1);
+  return doPause();
 }
 
 exports.doSuccess = (msg) => {
   console.log(pad(colors.green('✅ '+ msg)));
-  return doPause(1);
+  return doPause();
 }
 
 exports.doError = () => {
   console.log(pad(colors.red('❌ We\'ve got a problem. Script halted at last step.')));
-  doPause(1);
+  doPause();
   shell.exit(1);
 }
