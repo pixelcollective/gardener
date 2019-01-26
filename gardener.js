@@ -45,12 +45,13 @@ inquirer
       stagingHost: answers.stagingHost,
       github: answers.github,
       email: answers.email,
-      configPath: gardenerPath + '/config',
-      traefikPath: gardenerPath + '/traefik',
-      bedrockPath: gardenerPath + '/' + answers.host,
-      trellisPath: gardenerPath + '/trellis',
-      sagePath: gardenerPath + '/' + answers.host + '/web/app/themes/sage',
-      soilPath: gardenerPath + '/' + answers.host + '/web/app/plugins/soil',
+      gardenerPath: gardenerPath,
+      configPath: gardenerPath  +'/config',
+      traefikPath: gardenerPath +'/traefik',
+      bedrockPath: gardenerPath +'/' + answers.host,
+      trellisPath: gardenerPath +'/trellis',
+      sagePath: gardenerPath +'/'+ answers.host +'/web/app/themes/sage',
+      soilPath: gardenerPath +'/'+ answers.host +'/web/app/plugins/soil',
     };
 
     let err = null;
@@ -67,7 +68,10 @@ inquirer
     sleep.sleep (1);
 
     tasks.initializeRoots  (config, err);
-    tasks.initializeDocker (config, err);
+    tasks.trellis          (config, err);
+    tasks.vault            (config, err);
     tasks.vhost            (config, err);
-
+    tasks.initializeDocker (config, err);
+    // tasks.bedrock          (config, err);
+    // tasks.sage             (config, err);
   });
