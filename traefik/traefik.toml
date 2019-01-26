@@ -1,0 +1,30 @@
+debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["http"]
+# defaultEntryPoints = ["http","https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.http.redirect]
+  # entryPoint = "https"
+  # [entryPoints.https]
+  # address = ":443"
+  # [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+exposedbydefault = true
+
+# [acme]
+# email = "developers@tinypixel.io"
+# storage = "acme.json"
+# entryPoint = "https"
+# OnHostRule = true
+
+# [acme.httpChallenge]
+# entryPoint = "http"

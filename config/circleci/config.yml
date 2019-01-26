@@ -1,0 +1,67 @@
+
+# See: https://github.com/TypistTech/tiller-circleci
+---
+version: 2
+jobs:
+  deploy-staging:
+    docker:
+      - image: itinerisltd/tiller:latest
+    environment:
+      host_key_checking: false
+      SITE_ENV: staging
+      SITE_KEY: {{ HOST }}
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "5e:d5:c5:af:1b:ef:9e:72:67:5b:cf:f5:87:51:9f:da"
+      - restore_cache:
+          key: v1-ansible-galaxy-{{ checksum "trellis/requirements.yml" }}
+      - run:
+          name: Set Ansible Vault Pass
+          command: echo $ANSIBLE_VAULT_PASSWORD > .vault_pass
+          working_directory: trellis
+      - run:
+          name: Install Ansible Galaxy Roles
+          command: ansible-galaxy install -r requirements.yml -vvvv
+          working_directory: trellis
+      - deploy:
+          command: ansible-playbook deploy.yml -e env=$SITE_ENV -e site=$SITE_KEY -vvvv
+          working_directory: trellis
+  deploy-production:
+    docker:
+      - image: itinerisltd/tiller:latest
+    environment:
+      ANSIBLE_HOST_KEY_CHECKING: false
+      SITE_ENV: production
+      SITE_KEY: {{ HOST }}
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "5e:d5:c5:af:1b:ef:9e:72:67:5b:cf:f5:87:51:9f:da"
+      - restore_cache:
+          key: v1-ansible-galaxy-{{ checksum "trellis/requirements.yml" }}
+      - run:
+          name: Set Ansible Vault Pass
+          command: echo $ANSIBLE_VAULT_PASSWORD > .vault_pass
+          working_directory: trellis
+      - run:
+          name: Install Ansible Galaxy Roles
+          command: ansible-galaxy install -r requirements.yml -vvvv
+          working_directory: trellis
+      - deploy:
+          command: ansible-playbook deploy.yml -e env=$SITE_ENV -e site=$SITE_KEY -vvvv
+          working_directory: trellis
+workflows:
+  version: 2
+  tiller:
+    jobs:
+      - deploy-staging:
+          filters:
+            branches:
+              only: development
+      - deploy-production:
+          filters:
+            branches:
+              only: master

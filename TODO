@@ -1,0 +1,7 @@
+# TODO for v1.0.0
+
+* sane .gitignore
+* composer
+* .circleci (for bedrock, not the project)
+* README / docs / mini site?
+* publish on npm
