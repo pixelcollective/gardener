@@ -1,0 +1,17 @@
+wordpress_sites:
+  example.com:
+    site_hosts:
+      - canonical: example.com
+        redirects:
+          - www.example.com
+    local_path: ../example.com
+    repo: git@github.com:kellymears/example.com.git
+    repo_subtree_path: example.com
+    branch: master
+    multisite:
+      enabled: false
+    ssl:
+      enabled: true
+      provider: letsencrypt
+    cache:
+      enabled: true

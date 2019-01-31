@@ -4,12 +4,12 @@ const messages = require('./../messages');
 exports.copyFiles = (config, err) => {
   const tasks = [
     {
-      label: 'cp config/docker-compose/wordpress/Dockerfile ' + config.bedrockPath +'/Dockerfile',
-      command: shell.cp('config/docker-compose/wordpress/Dockerfile', config.bedrockPath +'/Dockerfile'),
+      label: 'cp config/bedrock/Dockerfile ' + config.bedrockPath +'/Dockerfile',
+      command: shell.cp(config.gardenerPath +'/config/bedrock/Dockerfile', config.bedrockPath +'/Dockerfile'),
     },
     {
-      label: 'cp config/docker-compose/wordpress/docker-compose.yml ' + config.bedrockPath +'/docker-compose.yml',
-      command: shell.cp('config/docker-compose/wordpress/docker-compose.yml', config.bedrockPath +'/docker-compose.yml'),
+      label: 'cp config/bedrock/docker-compose.yml ' + config.bedrockPath +'/docker-compose.yml',
+      command: shell.cp(config.gardenerPath +'/config/bedrock/docker-compose.yml', config.bedrockPath +'/docker-compose.yml'),
     },
   ];
 
@@ -23,23 +23,23 @@ exports.copyConfig = (config, err) => {
       command: shell.mkdir(config.bedrockPath +'/config/docker'),
     },
     {
-      label: 'cp config/docker-compose/wordpress/php.ini ' + config.bedrockPath +'/config/docker/php.ini',
-      command: shell.cp('config/docker-compose/wordpress/php.ini', config.bedrockPath +'/config/docker/php.ini'),
+      label: 'cp config/bedrock/php.ini ' + config.bedrockPath +'/config/docker/php.ini',
+      command: shell.cp(config.gardenerPath +'/config/bedrock/php.ini', config.bedrockPath +'/config/docker/php.ini'),
     },
     {
-      label: 'cp config/docker-compose/wordpress/site.nginx.conf ' + config.bedrockPath +'/config/docker/site.nginx.conf',
-      command: shell.cp('config/docker-compose/wordpress/site.nginx.conf', config.bedrockPath +'/config/docker/site.nginx.conf'),
+      label: 'cp config/bedrock/site.nginx.conf ' + config.bedrockPath +'/config/docker/site.nginx.conf',
+      command: shell.cp(config.gardenerPath +'/config/bedrock/site.nginx.conf', config.bedrockPath +'/config/docker/site.nginx.conf'),
     },
   ];
 
-  return doTasks('Copying Docker configuration ❖', ' Docker configuration copied', tasks, err);
+  return doTasks(config.gardenerPath +'/Copying Docker configuration ❖', ' Docker configuration copied', tasks, err);
 }
 
 exports.configureEnv = (config, err) => {
   const tasks = [
     {
-      label: 'cp -f config/docker-compose/wordpress/.env '+ config.bedrockPath +'/.env',
-      command: shell.cp('-f', 'config/docker-compose/wordpress/.env', config.bedrockPath +'/.env'),
+      label: 'cp -f config/bedrock/env '+ config.bedrockPath +'/.env',
+      command: shell.cp('-f', config.gardenerPath +'/config/bedrock/env', config.bedrockPath +'/.env'),
     },
     {
       label: 'sed -i {{ TEST_HOST }} '+ config.testHost +' '+ config.bedrockPath +'/.env',

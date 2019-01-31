@@ -1,0 +1,19 @@
+vault_mysql_root_password: {{ VAULT_MYSQL_ROOT_PASSWORD }}
+
+vault_users:
+  - name: "{{ admin_user }}"
+    password: {{ VAULT_USERS_PASSWORD }}
+    salt: "{{ VAULT_USERS_SALT }}"
+
+vault_wordpress_sites:
+  {{ VAULT_HOST }}:
+    env:
+      db_password: {{ VAULT_DB_PASSWORD }}
+      auth_key: "{{ VAULT_AUTH_KEY_SALT }}"
+      secure_auth_key: "{{ VAULT_SECURE_AUTH_KEY }}"
+      logged_in_key: "{{ VAULT_LOGGED_IN_KEY }}"
+      nonce_key: "{{ VAULT_NONCE_KEY }}"
+      auth_salt: "{{ VAULT_AUTH_SALT }}"
+      secure_auth_salt: "{{ VAULT_SECURE_AUTH_SALT }}"
+      logged_in_salt: "{{ VAULT_LOGGED_IN_SALT }}"
+      nonce_salt: "{{ VAULT_NONCE_SALT }}"

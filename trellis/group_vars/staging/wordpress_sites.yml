@@ -1,0 +1,15 @@
+wordpress_sites:
+  example.com:
+    site_hosts:
+      - canonical: staging.example.com
+    local_path: ../staging.example.com
+    repo: git@github.com:kellymears/staging.example.com.git
+    repo_subtree_path: staging.example.com
+    branch: development
+    multisite:
+      enabled: false
+    ssl:
+      enabled: true
+      provider: letsencrypt
+    cache:
+      enabled: true

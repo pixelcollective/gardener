@@ -1,6 +1,10 @@
-const init = require('./tasks/init');
-const docker = require('./tasks/docker');
-const host = require('./tasks/vhost')
+const init     = require('./tasks/init');
+const docker   = require('./tasks/docker');
+const host     = require('./tasks/vhost');
+const vault    = require('./tasks/vault');
+const trellis  = require('./tasks/trellis');
+const bedrock  = require('./tasks/bedrock');
+const sage     = require('./tasks/sage');
 const messages = require('./messages');
 
 exports.initializeRoots = (config, err) => {
@@ -9,6 +13,7 @@ exports.initializeRoots = (config, err) => {
   init.Bedrock       (config, err);
   init.Sage          (config, err);
   init.Soil          (config, err);
+  init.Git           (config, err);
   messages.doSuccess (' Roots.io stack initialized. ');
 }
 
@@ -24,7 +29,33 @@ exports.initializeDocker = (config, err) => {
 }
 
 exports.vhost = (config, err) => {
-  messages.doInfo     (' Configuring vhost.. ');
+  messages.doInfo    (' Configuring vhost.. ');
   host.configure     (config, err);
-  messages.doSuccess  (' vhost set');
+}
+
+exports.vault = (config, err) => {
+  messages.doInfo    (' Keeping secrets');
+  vault.fillVault    ('staging', config, err);
+  vault.fillVault    ('production', config, err);
+  vault.encryptVault (config, err);
+  messages.doSuccess    (' Secrets kept');
+}
+
+exports.trellis = (config, err) => {
+  messages.doInfo    (' Configure Trellis');
+  trellis.copyFiles  (config, err);
+  trellis.configure  (config, err);
+  messages.doSuccess  (' Trellis configured ');
+}
+
+exports.bedrock = (config, err) => {
+  messages.doInfo    (' Install Bedrock');
+  bedrock.install    (config, err);
+  messages.doSuccess (' Bedrock installed ');
+}
+
+exports.sage = (config, err) => {
+  messages.doInfo    (' Install Sage');
+  sage.install       (config, err);
+  messages.doSuccess (' Sage installed ');
 }

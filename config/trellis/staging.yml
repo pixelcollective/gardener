@@ -1,0 +1,15 @@
+wordpress_sites:
+  {{ HOST }}:
+    site_hosts:
+      - canonical: {{ CANONICAL_HOST }}
+    local_path: ../{{ CANONICAL_HOST }}
+    repo: git@github.com:{{ GITHUB_USER }}/{{ CANONICAL_HOST }}.git
+    repo_subtree_path: {{ CANONICAL_HOST }}
+    branch: {{ BRANCH }}
+    multisite:
+      enabled: false
+    ssl:
+      enabled: {{ SSL_ENABLED }}
+      provider: letsencrypt
+    cache:
+      enabled: {{ CACHE_ENABLED }}

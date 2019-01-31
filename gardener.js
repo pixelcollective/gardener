@@ -45,12 +45,13 @@ inquirer
       stagingHost: answers.stagingHost,
       github: answers.github,
       email: answers.email,
-      configPath: gardenerPath + '/config',
-      traefikPath: gardenerPath + '/traefik',
-      bedrockPath: gardenerPath + '/' + answers.host,
-      trellisPath: gardenerPath + '/trellis',
-      sagePath: gardenerPath + '/' + answers.host + '/web/app/themes/sage',
-      soilPath: gardenerPath + '/' + answers.host + '/web/app/plugins/soil',
+      gardenerPath: gardenerPath,
+      configPath: gardenerPath  +'/config',
+      traefikPath: gardenerPath +'/traefik',
+      bedrockPath: gardenerPath +'/' + answers.host,
+      trellisPath: gardenerPath +'/trellis',
+      sagePath: gardenerPath +'/'+ answers.host +'/web/app/themes/sage',
+      soilPath: gardenerPath +'/'+ answers.host +'/web/app/plugins/soil',
     };
 
     let err = null;
@@ -67,7 +68,23 @@ inquirer
     sleep.sleep (1);
 
     tasks.initializeRoots  (config, err);
-    tasks.initializeDocker (config, err);
+    tasks.trellis          (config, err);
+    tasks.vault            (config, err);
     tasks.vhost            (config, err);
+    tasks.initializeDocker (config, err);
+    tasks.bedrock          (config, err);
+    tasks.sage             (config, err);
 
+    shell.echo (pad ('👩‍🚀 One small step...'));
+    sleep.sleep (1);
+    shell.echo (pad ('From here you will need to run `composer install` in Bedrock and Sage'));
+    sleep.msleep (500);
+    shell.echo (pad ('Then you *should* be good to go with `yarn start` in Sage'));
+    sleep.msleep (500);
+    shell.echo (pad ('For standard local dev you\'ll need to run `vagrant up` in Trellis'));
+    sleep.msleep (500);
+    shell.echo (pad ('To deploy you should double check everything that was automated and enter your host info in trellis/hosts.'));
+    sleep.msleep (500);
+    shell.echo (pad ('Happy deving! 🙌'));
+    sleep.sleep (3);
   });

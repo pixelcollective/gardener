@@ -61,6 +61,17 @@ exports.Soil = (config, err) => {
   return doTasks('Initializing Soil ❖', ' Soil initialized', tasks, err);
 }
 
+exports.Git = (config, err) => {
+  const tasks = [
+    {
+      label: 'cp config/bedrock/gitignore '+ config.bedrockPath +'/.gitignore',
+      command: shell.cp('-r', 'config/bedrock/gitignore', config.bedrockPath +'/.gitignore')
+    }
+  ];
+
+  return doTasks('Initializing Git ❖', ' Git initialized', tasks, err);
+}
+
 doTasks = (description, success, tasks, err) => {
   messages.doInfo(description);
   for (let task of tasks) {

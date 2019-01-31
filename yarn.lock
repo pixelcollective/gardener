@@ -491,6 +491,11 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
+generate-password@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/generate-password/-/generate-password-1.4.1.tgz#33ab0f004d3adbde6c63bfc8bb9798da2a848174"
+  integrity sha512-MwMSkOIKkgYBG3JrquF0m/Rky+pl5jZFNmoroE9bQU5VawFDKdJfxMx1qBthPusx8GQyNWSW0m+Jaw0mZnqApg==
+
 get-func-name@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/get-func-name/-/get-func-name-2.0.0.tgz#ead774abee72e20409433a066366023dd6887a41"
@@ -822,7 +827,7 @@ minimist@0.0.8:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
   integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
 
-minimist@^1.1.0:
+minimist@^1.1.0, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
@@ -880,6 +885,13 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
+
+node-composer-runner@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/node-composer-runner/-/node-composer-runner-0.3.0.tgz#4c1e146bfaec309ba8d6e96b2ec33b858eaf9871"
+  integrity sha512-z4bRXTWhAuFCXe0Bh4axSPFkMmfrnaO0TcnTwzP/8H5Sc6ej8BqAbuImnnmm2ZXBSEP4TqDBpGZdRUce9uiFZA==
+  dependencies:
+    minimist "^1.2.0"
 
 normalize-url@2.0.1:
   version "2.0.1"
