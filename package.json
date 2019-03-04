@@ -15,7 +15,7 @@
     "shelljs": "^0.8.2"
   },
   "devDependencies": {
-    "eslint": "^5.13.0"
+    "eslint": "^5.15.0"
   },
   "scripts": {
     "gardener": "bin/gardener.js"
