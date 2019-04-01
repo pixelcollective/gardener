@@ -623,10 +623,10 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
 
-pad@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/pad/-/pad-2.2.1.tgz#e53e5de1304bc4c6c38004cad803f7641cff3220"
-  integrity sha512-lVia7rFne82Flf8V5Szzw2oP2zcQBGtCUXvo0pF1c6CmUHc9QLSZ1NQM/YujaM5YdQBsLJ1u90om+T1zKF42HQ==
+pad@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/pad/-/pad-2.2.3.tgz#098a53265c87952f770a56c938d0994a82943bef"
+  integrity sha512-12N4cBjllWsZIjEBs3cUWkoEfVstOZNucNsRM8LA5hnMhH+7vMnzQk3PYqoyYsgVVuI9IXckhsIjLtoMiJLUVA==
   dependencies:
     wcwidth "^1.0.1"
 
