@@ -10,7 +10,7 @@
   "repository": "pixelcollective/gardener",
   "dependencies": {
     "colors": "^1.3.2",
-    "inquirer": "^6.2.2",
+    "inquirer": "^6.4.1",
     "pad": "^2.2.1",
     "shelljs": "^0.8.2"
   },
